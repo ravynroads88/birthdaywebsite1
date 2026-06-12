@@ -1,0 +1,177 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🎉</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #4a4a4a;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            margin: 20px;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        h1 {
+            color: #ff477e;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #666;
+        }
+
+        .highlight-text {
+            font-style: italic;
+            font-size: 1.3rem;
+            color: #ff5c8a;
+            font-weight: 600;
+        }
+
+        .btn {
+            background-color: #ff477e;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 5px 15px rgba(255, 71, 126, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #ff7096;
+            transform: translateY(-2px);
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .media-grid img, .media-grid video {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            object-fit: cover;
+            height: 200px;
+        }
+
+        video {
+            background-color: #000;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Step 1: Welcome Screen -->
+        <div id="step1" class="step active">
+            <h1>Hey You! ✨</h1>
+            <p>I built something special just for your birthday. Are you ready to see it?</p>
+            <button class="btn" onclick="nextStep(2)">Get Started</button>
+        </div>
+
+        <!-- Step 2: Beautiful Lines -->
+        <div id="step2" class="step">
+            <h1>For Someone Special 🌸</h1>
+            <p class="highlight-text">"In a world full of temporary things, your presence is my favorite constant. You bring a light into my life that no one else ever could."</p>
+            <p>Happy Birthday to the most amazing person I know. Every single day is brighter just because you are in it.</p>
+            <button class="btn" onclick="nextStep(3)">Next</button>
+        </div>
+
+        <!-- Step 3: Photo Gallery -->
+        <div id="step3" class="step">
+            <h1>Captured Moments 📸</h1>
+            <p>A few of my favorite pictures of you that always make me smile.</p>
+            <div class="media-grid">
+                <!-- Replace 'photo1.jpg' etc. with your actual photo file names -->
+                <img src="sakshi1.jpg" alt="Beautiful Moment 1">
+                <img src="sakshi2.jpg" alt="Beautiful Moment 2">
+                <img src="sakshi3.jpg" alt="Beautiful Moment 3">
+            </div>
+            <button class="btn" onclick="nextStep(4)">U ARE NOT READY FOR THIS?</button>
+        </div>
+
+        <!-- Step 4: Video Section -->
+        <div id="step4" class="step">
+            <h1>Memories in Motion 🎥</h1>
+            <p>Because static pictures just aren't enough to capture your energy!</p>
+            <div class="media-grid">
+                <!-- Replace 'video1.mp4' with your actual video file name -->
+                <video src="sakvid.mp4" controls></video>
+            </div>
+            <button class="btn" onclick="nextStep(5)">What actually u are</button>
+        </div>
+
+        <!-- Step 5: Final Beauty & Cuteness Paragraphs -->
+        <div id="step5" class="step">
+            <h1>What You Are To Me 💕</h1>
+            <p>To put it simply, you are an absolute definition of grace and cuteness combined. The way your eyes light up when you laugh, and how effortlessly you spread joy to everyone around you, is genuinely magical. You possess a unique charm that makes the world feel softer and happier.</p>
+            <p>Beyond your outside beauty, your kind heart and cute little habits make you entirely irreplaceable. You have this beautiful ability to make ordinary days feel like a celebration just by being yourself, and I am incredibly grateful to experience that warmth.</p>
+            <p>Never forget how wonderfully special you are. May this year bring you as much happiness, laughter, and beauty as you constantly give to the world. Happy Birthday! 🎂✨</p>
+        </div>
+
+    </div>
+
+    <script>
+        function nextStep(stepNumber) {
+            // Hide all steps
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            
+            // Show the target step
+            document.getElementById('step' + stepNumber).classList.add('active');
+            
+            // Pause videos if leaving step 4
+            if (stepNumber !== 4) {
+                document.querySelectorAll('video').forEach(video => video.pause());
+            }
+        }
+    </script>
+</body>
+</html>
